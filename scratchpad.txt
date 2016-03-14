@@ -1,20 +1,23 @@
+Web Engineering with ES6
+
 -== Readability ==-
 IFYOUWANTYOURCODETOBEEASYTOWRITEMAKEITEASYTOREAD
-if you want your code to be easy to write, make it easy to read. --Uncle Bob
 
-Relevant ES6 Functionalities: Object literals syntax, destructing and spread, arrow functions
+If you want your code to be easy to write, make it easy to read. --Uncle Bob
+
+Relevant ES6 Functionalities: Object literals syntax, destructing and spread, arrow functions, classes
 
 -== Abstraction ==-
 The art of programming is the art of organizing complexity --Edsger Dijkstra
 
-Relevant ES6 Functionalities: Map, Set, Weakmap, Promise, Generators
+Relevant ES6 Functionalities: Map, Set, Weakmap, Promise, Generators (promise + generator = async await),  Web APIs
 
 -== Quality ==-
 Beware of bugs in the above code; I have only proved it correct, not tried it. --Donald Knuth
 
 Relevant ES6 Functionalities: const and let, arrow functions (var self = this;), Number methods (precision),...
 
--== Professionalism ==-
+-== Tools ==-
 Release early. Release often. And listen to your customers --Eric Raymond
 
 Relevant technologies (toolchains): babel, eslint, gulp, webpack
@@ -22,7 +25,7 @@ Relevant technologies (toolchains): babel, eslint, gulp, webpack
 -== Vision ==-
 We must state relationships, not procedures. --Mary Grace Hopper
 
-AWebAssembly, HTTP2, APIs
+WebAssembly, HTTP2, Distributed Systems
 
 
 
