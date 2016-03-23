@@ -1,88 +1,37 @@
-Web Engineering with ES6
+= Web Engineering with ES6
+A non exhaustive introduction to EcmaScript 2016 with focus on how each feature helps you write better code
 
--== Readability ==-
-IFYOUWANTYOURCODETOBEEASYTOWRITEMAKEITEASYTOREAD
-
+==Readability
 If you want your code to be easy to write, make it easy to read. --Uncle Bob
 
 Relevant ES6 Functionalities: Object literals syntax, destructing and spread, arrow functions, classes
 
--== Abstraction ==-
+==Abstraction
 The art of programming is the art of organizing complexity --Edsger Dijkstra
 
 Relevant ES6 Functionalities: Map, Set, Weakmap, Promise, Generators (promise + generator = async await),  Web APIs
 
--== Quality ==-
+==Quality
 Beware of bugs in the above code; I have only proved it correct, not tried it. --Donald Knuth
 
 Relevant ES6 Functionalities: const and let, arrow functions (var self = this;), Number methods (precision),...
 
--== Tools ==-
+==Tools
 Release early. Release often. And listen to your customers --Eric Raymond
 
 Relevant technologies (toolchains): babel, eslint, gulp, webpack
 
--== Vision ==-
+==Vision
 We must state relationships, not procedures. --Mary Grace Hopper
 
 WebAssembly, HTTP2, Distributed Systems
 
 
-
-===================---====================
-
-
--== Readability ==-
+=Notes
+== Readability
 
 fun fact: the romans wrote all caps with no spaces.
 that is hard to read. it is even harder to correctly copy by hand.
 The scribes of the middle ages found that introducing word gaps and punctuation helped reduce the number of error in copying.
 
 Readability is key, it drives the way you think about the code.
-
-[example of readable and unreadable code]
-
-function f(n){for(var i=1,s=0;i<=n;i++){s=s+i}return s}
-
-const sumFrom1To = n => {
-  let z = 1,
-      sum = 0;
-
-  while(z <= n){
-    sum += z;
-    z += 1;
-  }
-
-  return sum;
-};
-
--== Abstraction ==-
-the *right* level of abstraction
-
-var f = function (n) {
-for (var i = 1, s = 0; i <= n; i+=1) {
-  s += i;
-}
-return s;
-};
-
-const sumFrom1ToN = n => {
-  return Array(n).fill().reduce((sum, _, i) => sum += i + 1, 0);
-};
-
-function range(a, b) {
-  return {
-    sum() {
-      return Array(b).fill().reduce((sum, _, i) => sum += i + 1, 0);
-    }
-  }
-}
-
-
-
-range(1, n).sum();
-
-
--== Quality ==-
-
-Beware of bugs in the above code; I have only proved it correct, not tried it. --Donald Knuth
