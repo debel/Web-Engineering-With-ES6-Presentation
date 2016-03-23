@@ -1,6 +1,8 @@
 #Web Engineering with ES6
 A non exhaustive introduction to EcmaScript 2016 with focus on how each feature helps you write better code
 
+Slides: http://mmikoff.net/slides/intro_es6/
+
 ##Outline
 
 ###Readability
