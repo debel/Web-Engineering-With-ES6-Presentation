@@ -217,10 +217,10 @@
                 };
 
                 let squares = squaresMaker();
-                squares.next(); // 1
-                squares.next(); // 4
-                squares.next(); // 9
-                squares.next(); // 16
+                squares.next(); // { value: 1, done: false }
+                squares.next(); // { value: 4, done: false }
+                squares.next(); // { value: 9, done: false }
+                squares.next(); // { value: 16, done: false }
             </code></pre>
         </section>
         <section id="abstraction-promises">
@@ -233,8 +233,11 @@
                     .catch(logError);
 
                 //how to create a promise
+                let after10Seconds = new Promise((y, n) => {
+                    setTimeout(y, 10000);
+                });
 
-                //promise methods
+                //promise helper methods
 
             </code></pre>
         </section>
