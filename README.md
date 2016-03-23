@@ -13,12 +13,12 @@ Relevant ES6 Functionalities: Object literals syntax, destructing and spread, ar
 ###Abstraction
 The art of programming is the art of organizing complexity --Edsger Dijkstra
 
-Relevant ES6 Functionalities: Map, Set, Weakmap, Promise, Generators (promise + generator = async await),  Web APIs
+Relevant ES6 Functionalities: Map, Set, Generators, Promises
 
 ###Quality
 Beware of bugs in the above code; I have only proved it correct, not tried it. --Donald Knuth
 
-Relevant ES6 Functionalities: const and let, arrow functions (var self = this;), Number methods (precision),...
+Relevant ES6 Functionalities: const and let, classes (methods on prototype), arrow functions (var self = this;), WeakMap (memory leaks), Number methods (precision), ...
 
 ###Tools
 Release early. Release often. And listen to your customers --Eric Raymond
@@ -28,7 +28,7 @@ Relevant technologies (toolchains): babel, eslint, gulp, webpack
 ###Vision
 We must state relationships, not procedures. --Mary Grace Hopper
 
-WebAssembly, HTTP2, Distributed Systems
+Async/Await, WebAssembly, HTTP2, Web APIs
 
 
 ##Notes
