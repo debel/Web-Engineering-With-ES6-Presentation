@@ -61,11 +61,6 @@
                 <br/>I have only proved it correct, not tried it.
                 <br/><div style="text-align: right"> --Donald Knuth</div></div>
         </section>
-        <section id="evolution-quote">
-            <h3>Evolution</h3>
-            <div class="fragment">Release early. Release often. And listen to your customers
-                <br/><div style="text-align: right">--Eric Raymond</div></div>
-        </section>
         <section id="es6-features">
             <h3>Some of the new features in ES6</h3>
             <ul>
@@ -97,6 +92,57 @@
             <h4>Attention! Code ahead!</h4>
             <img src="http://www.tricedesigns.com/wp-content/uploads/2015/09/jsatt.jpg" />
             <h4>Attention! Code ahead!</h4>
+        </section>
+
+        <section id="let-const-declarations">
+            <h4>Const and let</h4>
+            <pre class="es5"><code class="javascript">
+                //es5
+
+                function incCounter() {
+                counter += 1;
+                }
+
+                var counter = 0;
+
+                //this code works because of var hoisting
+            </code></pre>
+            <pre class="es6"><code class="javascript">
+                //es6
+
+                const pi = { value: 3.14 }; //pi cannot be reassigned
+
+                pi = 3.14; //throws an Error
+
+                pi.value = 4; //works because the value itself is not immutable
+
+                const me = Object.freeze({ name: 'Mihail' }); //true constant
+
+                if (condition) {
+                    let j = 12; //j exists only inside the if block
+                }
+
+                console.log(j); //throws an Error
+            </code></pre>
+        </section>
+        <section id="why-let-const-declarations">
+            <h4>How do const and let help?</h4>
+            <ul>
+                <li>
+                    Readability
+                    <ul>
+                        <li>Clear intent</li>
+                    </ul>
+                </li>
+                <br/>
+                <li>
+                    Quality
+                    <ul>
+                        <li>Block scope (let)</li>
+                        <li>Immutable binding (const)</li>
+                    </ul>
+                </li>
+            </ul>
         </section>
 
         <section id="arrow-functions">
@@ -307,7 +353,7 @@
             </code></pre>
             <pre class="es6"><code class="javascript">
                 //Maps
-                var key = { a: 1 },
+                let key = { a: 1 },
                     value = { b: 2 },
                     map = new Map();
 
@@ -367,37 +413,19 @@
             <h4>How do promises help?</h4>
         </section>
 
-        <section id="let-const-declarations">
-            <h4>Const and let</h4>
-            <pre class="es5"><code class="javascript">
-                //es5
-
-                function incCounter() {
-                    counter += 1;
-                }
-
-                var counter = 0;
-
-                //this code works because of var hoisting
-            </code></pre>
-            <pre class="es6"><code class="javascript">
-                //es6
-
-                const pi = { value: 3.14 }; //pi cannot be reassigned
-
-                pi = 3.14; //throws an Error
-
-                pi.value = 4; //works because the value itself is not immutable
-
-                if (condition) {
-                    let j = 12; //j exists only inside the if block
-                }
-
-                console.log(j); //throws an Error
-            </code></pre>
+        <section id="evolution-quote">
+            <h3>Evolution</h3>
+            <div class="fragment">“The best way to predict the future is to implement it.”
+                <br/><div style="text-align: right;">--David Hansson</div></div>
         </section>
-        <section id="why-let-const-declarations">
-            <h4>How do const and let help?</h4>
+
+        <section id="async-await">
+            <h4>Async/Await</h4>
+            <pre class="es6"><code class="javascript">
+                async function getFavoriteBeers() {
+                    arrayIntersection(await getAvailableBeers(), await getMyFavorite());
+                }
+            </code></pre>
         </section>
 
         <section id="webassembly">
@@ -408,6 +436,14 @@
             </ul>
         </section>
 
+        <section id="http2">
+            <h4>HTTP/2</h4>
+            <ul>
+                <li>faster</li>
+                <li>many new features</li>
+                <li>breaks many assumptions</li>
+            </ul>
+        </section>
         <section id="thanks">
             <h4>Thank you!</h4>
             <h3>Comments? Question?</h3>
