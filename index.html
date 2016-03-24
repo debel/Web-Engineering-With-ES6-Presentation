@@ -28,18 +28,16 @@
             - Readability
             - Abstraction
             - Quality
-            - Tools
             - Vision
             -
         </section>
         <section id="readability-quote">
             <h3>Readability</h3>
-            <div class="fragment fade-in">
-                <div class="fragment fade-out">IFYOUWANTYOURCODETOBEEASYTOWRITEMAKEITEASYTOREAD</div>
+            <div class="fade-out">
+            <div class="fragment fade-in">IFYOUWANTYOURCODETOBEEASYTOWRITEMAKEITEASYTOREAD</div>
             </div>
             <div class="fragment">If you want your code to be easy to write, make it easy to read.
-                <br/>
-                <div style="text-align: right;">--Uncle Bob</div>
+                <br/><div style="text-align: right;">--Uncle Bob</div>
             </div>
         </section>
         <section id="readability-intro">
@@ -225,6 +223,7 @@
         </section>
         <section id="abstraction-promises">
             <h4>Promises</h4>
+            A promise is a "thenable"
             <pre class="es6"><code class="javascript">
                 //how to use promises
                 getNumbersAsync()
@@ -233,25 +232,78 @@
                     .catch(logError);
 
                 //how to create a promise
-                let after10Seconds = new Promise((y, n) => {
-                    setTimeout(y, 10000);
+                let after10Seconds = new Promise((pass, fail) => {
+                    setTimeout(pass, 10000);
                 });
 
                 //promise helper methods
-                Promise.resolve(value)
+                Promise.resolve(value) //returns a promise
                 Promise.reject(error)
                 Promise.all([array, of, promises])
                 Promise.race([array, of, promises])
             </code></pre>
         </section>
-        <section>
-            Quality
+        <section id="quality-quote">
+            <h3>Quality</h3>
+            <div class="fragment">Beware of bugs in the above code; I have only proved it correct, not tried it.
+                <br/><div style="text-align: right"> --Donald Knuth</div></div>
         </section>
-        <section>
-            Tools
+        <section id="quality-intro">
+            <h4>How does ES6 help quality?</h4>
+            <ul>
+                <li>Const and let</li>
+                <li>Arrow functions</li>
+                <li>Classes</li>
+                <li>WeakMap</li>
+                <li>Number methods</li>
+            </ul>
         </section>
-        <section>
-            Vision
+        <section id="quality-declarations">
+            <h4>Const and let</h4>
+            <pre class="es5"><code class="javascript">
+                //es5
+
+                function incCounter() {
+                    counter += 1;
+                }
+
+                var counter = 0;
+
+                //this code works because of var hoisting
+            </code></pre>
+            <pre class="es6"><code class="javascript">
+                //es6
+
+                const pi = { value: 3.14 }; //pi cannot be reassigned
+
+                pi = 3.14; //throws an Error
+
+                pi.value = 4; //works because the value itself is not immutable
+
+                if (condition) {
+                    let j = 12; //j exists only inside the if block
+                }
+
+                console.log(j); //throws an Error
+            </code></pre>
+        </section>
+        <section id="quality-"></section>
+        <section id="tools-quote">
+            <h3>Tools</h3>
+            <div class="fragment">Release early. Release often. And listen to your customers
+            <br/><div style="text-align: right">--Eric Raymond</div></div>
+        </section>
+        <section id="vision-quote">
+            <h3>Vision</h3>
+            <div class="fragment">
+            We must state relationships, not procedures.
+                <br/><div style="text-align: right">--Mary Grace Hopper</div>
+            </div>
+        </section>
+        <section id="thanks">
+            <h3>I hope it has been interesting.</h3>
+            <h4>Thank you!</h4>
+            <h4>Discussion</h4>
         </section>
     </div>
 </div>
