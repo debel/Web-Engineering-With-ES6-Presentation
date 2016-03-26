@@ -38,4 +38,4 @@ fun fact: the romans wrote all caps with no spaces.
 that is hard to read. it is even harder to correctly copy by hand.
 The scribes of the middle ages found that introducing word gaps and punctuation helped reduce the number of error in copying.
 
-Readability is key, it drives the way you think about the code.
+Readability drives the way you think about your code.

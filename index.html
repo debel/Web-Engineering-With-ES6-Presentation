@@ -26,9 +26,9 @@
         <section id="intro-es6">
             <h3>What is ES6?</h3>
             <ul>
-                <li>JavaScript specification, released in June 2015</li>
+                <li>JavaScript language specification, released in June 2015</li>
                 <li>Incrementally implemented in browsers and NodeJS</li>
-                <li>Introduces a plethora of features and improvements</li>
+                <li>Introduces a plethora of new features and improvements</li>
             </ul>
         </section>
         <section id="intro-engineering">
@@ -48,7 +48,14 @@
                     <br/><div style="text-align: right;">--Uncle Bob</div>
                 </div>
             </div>
+            <aside class="notes">
+                fun fact: the romans wrote all caps with no spaces.
 
+                that is hard to read. it is even harder to correctly copy by hand.
+                The scribes of the middle ages found that introducing word gaps and punctuation helped reduce the number of error in copying.
+
+                Readability drives the way you think about your code.
+            </aside>
         </section>
         <section id="abstraction-quote">
             <h3>Abstraction</h3>
@@ -89,7 +96,7 @@
         </section>
 
         <section id="code-ahead">
-            <h4>Attention! Code ahead!</h4>
+            <h4 style="margin-bottom:0">Attention! Code ahead!</h4>
             <img src="http://www.tricedesigns.com/wp-content/uploads/2015/09/jsatt.jpg" />
             <h4>Attention! Code ahead!</h4>
         </section>
@@ -100,7 +107,7 @@
                 //es5
 
                 function incCounter() {
-                counter += 1;
+                    counter += 1;
                 }
 
                 var counter = 0;
@@ -423,7 +430,7 @@
             <h4>Async/Await</h4>
             <pre class="es6"><code class="javascript">
                 async function getFavoriteBeers() {
-                    arrayIntersection(await getAvailableBeers(), await getMyFavorite());
+                    arrayIntersection(await getAvailableBeers(), await getMyFavorites());
                 }
             </code></pre>
         </section>
@@ -436,6 +443,7 @@
                 <li>breaks many assumptions</li>
             </ul>
         </section>
+
         <section id="webassembly">
             <h4>WebAssembly</h4>
             <ul>
@@ -463,6 +471,9 @@
             {
                 src: 'bower_components/reveal-js/plugin/highlight/highlight.js',
                 callback: function () { hljs.initHighlightingOnLoad(); }
+            },
+            {
+                src: 'bower_components/reveal-js/plugin/notes/notes.js'
             }
         ]
     });
