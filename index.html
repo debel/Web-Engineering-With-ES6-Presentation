@@ -14,6 +14,10 @@
         .es6>code {
             border: 1px solid mediumseagreen;
         }
+
+        .es7>code {
+            border: 1px solid orange;
+        }
     </style>
 </head>
 <body>
@@ -27,9 +31,35 @@
             <h3>What is ES6?</h3>
             <ul>
                 <li>JavaScript language specification, released in June 2015</li>
-                <li>Incrementally implemented in browsers and NodeJS</li>
+                <li>Incrementally implemented in browsers and other environments</li>
                 <li>Introduces a plethora of new features and improvements</li>
             </ul>
+        </section>
+        <section id="es6-features">
+            <h3>Some of the new features in ES6</h3>
+            <ul>
+                <li>Arrow functions</li>
+                <li>Classes</li>
+                <li>Object literals syntax</li>
+                <li>Destructing</li>
+                <li>Default parameters</li>
+                <li>Array spreading</li>
+                <li>Variable declarations</li>
+                <li>Generators</li>
+            </ul>
+            <ul style="margin-left: 100px;">
+                <li>Promises</li>
+                <li>Iterators</li>
+                <li>Symbols</li>
+                <li>Number methods</li>
+                <li>Template strings</li>
+                <li>Sets</li>
+                <li>Maps</li>
+                <li>WeakMap</li>
+            </ul>
+        </section>
+        <section id="mind-blown">
+            <img src="https://pbs.twimg.com/profile_images/378800000514808252/1f00f3bd9749a7b6c3392fc763a4df9b_400x400.jpeg" />
         </section>
         <section id="intro-engineering">
             <h3>How does ES6 help engineering?</h3>
@@ -67,32 +97,6 @@
             <div class="fragment">Beware of bugs in the above code;
                 <br/>I have only proved it correct, not tried it.
                 <br/><div style="text-align: right"> --Donald Knuth</div></div>
-        </section>
-        <section id="es6-features">
-            <h3>Some of the new features in ES6</h3>
-            <ul>
-                <li>Arrow functions</li>
-                <li>Classes</li>
-                <li>Object literals syntax</li>
-                <li>Destructing</li>
-                <li>Default parameters</li>
-                <li>Array spreading</li>
-                <li>Variable declarations</li>
-                <li>Generators</li>
-            </ul>
-            <ul style="margin-left: 100px;">
-                <li>Promises</li>
-                <li>Iterators</li>
-                <li>Symbols</li>
-                <li>Number methods</li>
-                <li>Template strings</li>
-                <li>Sets</li>
-                <li>Maps</li>
-                <li>WeakMap</li>
-            </ul>
-        </section>
-        <section id="mind-blown">
-            <img src="https://pbs.twimg.com/profile_images/378800000514808252/1f00f3bd9749a7b6c3392fc763a4df9b_400x400.jpeg" />
         </section>
 
         <section id="code-ahead">
@@ -156,12 +160,32 @@
             <h4>Arrow functions</h4>
                 <pre class="es5"><code class="javascript">
                     //es5
+                    fancyObject.coolMethod = function () {
+                        var self = this;
+                        this.elements.forEach(function (el) {
+                            self.processElement(el); //different "this", must use self
+                        });
+                    }
+
+                    [1, 2, 3, 4].map(function square(i) {
+                        return i*i;
+                    }); // [1, 4, 9, 16]
+
                     getNumbersAsync(function callback(a, b) {
                         return a + b;
                     });
                 </code></pre>
                 <pre class="es6"><code class="javascript">
                     //es6
+                    fancyObject.coolMethod = function () {
+                        this.elements.forEach(el => {
+                            this.processElement(el); //same this as outer function
+                        });
+                    }
+
+                    [1, 2, 3, 4].map(i => i*i);
+                    // [1, 4, 9, 16]
+
                     getNumbersAsync((a, b) => a + b);
                 </code></pre>
         </section>
@@ -178,6 +202,7 @@
                     <li>Quality
                     <ul>
                         <li>uses the outer "this"</li>
+                        <li>no arguments meta parameter</li>
                     </ul>
                     </li>
                 </ul>
@@ -330,6 +355,21 @@
         </section>
         <section id="why-spreading">
             <h4>How does spreading help?</h4>
+            <ul>
+            <li>
+                Readability
+                <ul>
+                    <li>Concise and composable</li>
+                </ul>
+            </li>
+            <br/>
+            <li>
+                Quality
+                <ul>
+                    <li>Removes the need for the<br/>"arguments" meta parameter</li>
+                </ul>
+            </li>
+            </ul>
         </section>
 
         <section id="string-templates">
@@ -345,6 +385,21 @@
         </section>
         <section id="why-string-templates">
             <h4>How do template strings help?</h4>
+            <ul>
+            <li>
+                Abstraction
+                <ul>
+                    <li>Built-in template engine</li>
+                </ul>
+            </li>
+                <br/>
+                <li>
+                    Evolution
+                    <ul>
+                        <li>Customizable through functions</li>
+                    </ul>
+                </li>
+            </ul>
         </section>
 
         <section id="maps-and-sets">
@@ -371,6 +426,29 @@
         </section>
         <section id="why-maps-and-sets">
             <h4>How do sets & maps help?</h4>
+            <ul>
+                <li>
+                    Abstraction
+                    <ul>
+                        <li>Ability to relate any values types</li>
+                        <li>No more abusing objects and arrays<br/> for sets and maps</li>
+                    </ul>
+                </li>
+                <br/>
+                <li>
+                    Quality
+                    <ul>
+                        <li>WeakMap and WeakSet help stop memory leaks</li>
+                    </ul>
+                </li>
+                <br/>
+                <li>
+                    Evolution
+                    <ul>
+                        <li>Built-in implementations improve performance</li>
+                    </ul>
+                </li>
+            </ul>
         </section>
 
         <section id="generators">
@@ -379,20 +457,39 @@
                 function* squaresMaker() {
                     let i = 1;
                     while (true) {
-                        yield i*i;
-                        i += 1;
+                        let step = yield i*i;
+                        i += step || 1;
                     }
                 };
 
                 let squares = squaresMaker();
-                squares.next(); // { value: 1, done: false }
-                squares.next(); // { value: 4, done: false }
-                squares.next(); // { value: 9, done: false }
-                squares.next(); // { value: 16, done: false }
+                squares.next();  // { value: 1, done: false }
+                squares.next();  // { value: 4, done: false }
+                squares.next();  // { value: 9, done: false }
+                squares.next(2); // { value: 16, done: false }
+                //step = 2
+                squares.next();  // { value: 36, done: false }
             </code></pre>
         </section>
         <section id="why-generators">
             <h4>How do generators help?</h4>
+            <ul>
+                <li>
+                    Abstraction
+                    <ul>
+                        <li>State machine inside a function</li>
+                        <li>Two way message passing</li>
+                        <li>Co-routines and flow of control</li>
+                    </ul>
+                </li>
+                <br/>
+                <li>
+                    Evolution
+                    <ul>
+                        <li>Basis for implementing the async/await pattern</li>
+                    </ul>
+                </li>
+            </ul>
         </section>
 
         <section id="promises">
@@ -409,15 +506,41 @@
                     setTimeout(pass, 10000);
                 });
 
+                after10Seconds.then(doSomethingClever);
+
                 //promise helper methods
-                Promise.resolve(value) //returns a promise
-                Promise.reject(error)
-                Promise.all([array, of, promises])
-                Promise.race([array, of, promises])
+                Promise.resolve(value) //returns a "thenable" promise
+                Promise.reject(error) //returns a "catchable" promise
+                Promise.all([array, of, promises]) // waits for all
+                Promise.race([array, of, promises]) //the first to resolve wins
             </code></pre>
         </section>
         <section id="why-promises">
             <h4>How do promises help?</h4>
+            <ul>
+                <li>
+                    Readability
+                    <ul>
+                        <li>Clear and natural API</li>
+                        <li>Reduce callback hell</li>
+                    </ul>
+                </li>
+                <br/>
+                <li>
+                    Abstraction
+                    <ul>
+                        <li>Future value semantics</li>
+                        <li>Invert the flow of control</li>
+                    </ul>
+                </li>
+                <br/>
+                <li>
+                    Evolution
+                    <ul>
+                        <li>Basis for implementing the async/await pattern</li>
+                    </ul>
+                </li>
+            </ul>
         </section>
 
         <section id="evolution-quote">
@@ -428,10 +551,25 @@
 
         <section id="async-await">
             <h4>Async/Await</h4>
-            <pre class="es6"><code class="javascript">
-                async function getFavoriteBeers() {
-                    arrayIntersection(await getAvailableBeers(), await getMyFavorites());
+            <pre class="es7"><code class="javascript">
+                //es7
+                async function combinedQuery() {
+                    let firstAnswer = await firstQuery(),
+                        secondAnswer = await secondQuery(firstAnswer);
                 }
+            </code></pre>
+        </section>
+
+        <section id="annotations">
+            <h4>Annotations</h4>
+            <pre class="es7"><code class="javascript">
+                //es7
+                let myObject = {
+                    @readonly
+                    myConstant: 42
+                };
+
+                myObject.constant = 7; //throws an error
             </code></pre>
         </section>
 
@@ -439,8 +577,8 @@
             <h4>HTTP/2</h4>
             <ul>
                 <li>faster</li>
-                <li>many new features</li>
-                <li>breaks many assumptions</li>
+                <li>two way communication</li>
+                <li>breaks many hacks around http 1.1</li>
             </ul>
         </section>
 
@@ -456,6 +594,14 @@
             <h4>Thank you!</h4>
             <h3>Comments? Question?</h3>
         </section>
+
+        <section id="links">
+            <h4>Links!</h4>
+            <ul>
+                <li>Intro to server side JavaScript (previous presentation)</li>
+                <li>You don't know JavaScript book series</li>
+            </ul>
+        </section>
     </div>
 </div>
 <script src="bower_components/reveal-js/lib/js/head.min.js"></script>
@@ -466,7 +612,6 @@
         transitionSpeed: 'fast',
         controls: false,
         history: true,
-        slideNumber: 'c/t',
         dependencies: [
             {
                 src: 'bower_components/reveal-js/plugin/highlight/highlight.js',
