@@ -109,7 +109,6 @@
             <h4>Const and let</h4>
             <pre class="es5"><code class="javascript">
                 //es5
-
                 function incCounter() {
                     counter += 1;
                 }
@@ -120,7 +119,6 @@
             </code></pre>
             <pre class="es6"><code class="javascript">
                 //es6
-
                 const pi = { value: 3.14 }; //pi cannot be reassigned
 
                 pi = 3.14; //throws an Error
@@ -160,13 +158,6 @@
             <h4>Arrow functions</h4>
                 <pre class="es5"><code class="javascript">
                     //es5
-                    fancyObject.coolMethod = function () {
-                        var self = this;
-                        this.elements.forEach(function (el) {
-                            self.processElement(el); //different "this", must use self
-                        });
-                    }
-
                     [1, 2, 3, 4].map(function square(i) {
                         return i*i;
                     }); // [1, 4, 9, 16]
@@ -174,19 +165,25 @@
                     getNumbersAsync(function callback(a, b) {
                         return a + b;
                     });
+
+                    fancyObject.coolMethod = function () {
+                        var self = this;
+                        this.elements.forEach(function (el) {
+                            self.processElement(el); //different "this", must use self
+                        });
+                    }
                 </code></pre>
                 <pre class="es6"><code class="javascript">
                     //es6
-                    fancyObject.coolMethod = function () {
+                    [1, 2, 3, 4].map(i => i*i); // [1, 4, 9, 16]
+
+                    getNumbersAsync((a, b) => a + b);
+
+                    fancyObject.coolMethod = () => {
                         this.elements.forEach(el => {
                             this.processElement(el); //same this as outer function
                         });
                     }
-
-                    [1, 2, 3, 4].map(i => i*i);
-                    // [1, 4, 9, 16]
-
-                    getNumbersAsync((a, b) => a + b);
                 </code></pre>
         </section>
         <section id="why-arrows-functions">
@@ -405,6 +402,8 @@
         <section id="maps-and-sets">
             <h4>Sets & Maps</h4>
             <pre class="es6"><code class="javascript">
+                //es6
+                
                 //Sets
                 var key = 'any type of value',
                     set = new Set();
@@ -412,8 +411,7 @@
                 set.add(key);
 
                 set.has(key) //returns true or false
-            </code></pre>
-            <pre class="es6"><code class="javascript">
+
                 //Maps
                 let key = { a: 1 },
                     value = { b: 2 },
@@ -454,6 +452,7 @@
         <section id="generators">
             <h4>Generators</h4>
             <pre class="es6"><code class="javascript">
+                //es6
                 function* squaresMaker() {
                     let i = 1;
                     while (true) {
@@ -495,6 +494,7 @@
         <section id="promises">
             <h4>Promises</h4>
             <pre class="es6"><code class="javascript">
+                //es6
                 //how to use promises
                 getNumbersAsync()
                     .then((a,b) => a + b)
