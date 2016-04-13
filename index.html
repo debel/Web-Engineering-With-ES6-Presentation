@@ -181,7 +181,8 @@
 
                     fancyObject.coolMethod = () => {
                         this.elements.forEach(el => {
-                            this.processElement(el); //this is also an error, "this" doesn't point to fancyObject
+                            this.processElement(el);
+                            //this is an errpr - "this" doesn't point to fancyObject
                         });
                     }
                 </code></pre>
