@@ -120,11 +120,12 @@
                     if (false) {
                         var five = 5;
                     }
+                    //logical error! - the value of five is undefined
                 }
 
                 var counter = 0;
 
-                //this code works because of var hoisting
+                //this code "works" because of var hoisting
             </code></pre>
             <pre class="es6"><code class="javascript">
                 //es6
@@ -321,7 +322,9 @@
                 let { name, age, pet: { name: petName } } = getPersonalInfo();
 
                 //with function parameters
-                function sayHi({ name }) { ... }
+                function sayHi({ name }) {
+                    console.log('Hi, ' + name);
+                }
 
                 sayHi(getPersonalInfo());
             </code></pre>
@@ -455,13 +458,12 @@
             <h4>Sets & Maps</h4>
             <pre class="es6"><code class="javascript">
                 //es6
-                
                 //Sets
                 var key = 'any type of value',
                     set = new Set();
 
                 set.add(key);
-
+                set.delete(key);
                 set.has(key) //returns true or false
 
                 //Maps
@@ -470,8 +472,8 @@
                     map = new Map();
 
                 map.set(key, value);
-
-                map.get(key) //returns value
+                map.delete(key);
+                map.get(key); //returns value
             </code></pre>
         </section>
         <section id="why-maps-and-sets">
@@ -506,12 +508,12 @@
             <pre class="es6"><code class="javascript">
                 //es6
                 //how to create a promise
-                let getData = (url) => new Promise((pass, fail) => {
+                let getData = (url) => new Promise((resolve, reject) => {
                     ajax(url, (error, data) => {
                         if (error) {
-                            fail(error);
+                            reject(error);
                         } else {
-                            pass(data);
+                            resolve(data);
                         }
                     });
                 });
@@ -673,6 +675,16 @@
             </ul>
         </section>
 
+        <section id="what-we-skipped">
+            <h4>Future Topics</h4>
+            <ul>
+                <li>Using ES6 today through the Babel transpiler</li>
+                <li>Testing and monitoring tools</li>
+                <li>Web APIs: canvas, webGL, audio and workers</li>
+                <li>Modern JavaScript libraries, frameworks and design patterns</li>
+            </ul>
+        </section>
+
         <section id="links">
             <h4>Links!</h4>
             <ul>
@@ -681,6 +693,7 @@
                 <li><a href="http://exploringjs.com/">Exploring ES6</a></li>
                 <li><a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/">JavaScript Design Patterns</a></li>
                 <li><a href="https://github.com/tc39">JavaScript language development committee</a></li>
+                <li><a href="https://babeljs.io/">Babel transpiler</a></li>
             </ul>
         </section>
 
