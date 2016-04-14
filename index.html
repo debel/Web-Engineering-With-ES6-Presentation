@@ -59,7 +59,7 @@
             </ul>
         </section>
         <section id="mind-blown">
-            <img src="https://pbs.twimg.com/profile_images/378800000514808252/1f00f3bd9749a7b6c3392fc763a4df9b_400x400.jpeg" />
+            <img src="images/mind-blown.jpeg" />
         </section>
         <section id="intro-engineering">
             <h3>How does ES6 help engineering?</h3>
@@ -87,30 +87,39 @@
                 Readability drives the way you think about your code.
             </aside>
         </section>
-        <section id="abstraction-quote">
-            <h3>Abstraction</h3>
-            <div class="fragment">The art of programming is the art of organizing complexity
-                <br/><div style="text-align: right">--Edsger Dijkstra</div></div>
-        </section>
         <section id="quality-quote">
             <h3>Quality</h3>
             <div class="fragment">Beware of bugs in the above code;
                 <br/>I have only proved it correct, not tried it.
                 <br/><div style="text-align: right"> --Donald Knuth</div></div>
         </section>
+        <section id="abstraction-quote">
+            <h3>Abstraction</h3>
+            <div class="fragment">The art of programming is the art of organizing complexity
+                <br/><div style="text-align: right">--Edsger Dijkstra</div></div>
+        </section>
+        <section id="evolution-quote">
+            <h3>Evolution</h3>
+            <div class="fragment">“The best way to predict the future is to implement it.”
+                <br/><div style="text-align: right;">--David Hansson</div></div>
+        </section>
 
         <section id="code-ahead">
             <h4 style="margin-bottom:0">Attention! Code ahead!</h4>
-            <img src="http://www.tricedesigns.com/wp-content/uploads/2015/09/jsatt.jpg" />
+            <img src="images/jsatt.jpg" />
             <h4>Attention! Code ahead!</h4>
         </section>
 
         <section id="let-const-declarations">
-            <h4>Const and let</h4>
+            <h4>Variable declaration</h4>
             <pre class="es5"><code class="javascript">
                 //es5
                 function incCounter() {
-                    counter += 1;
+                    counter += five;
+
+                    if (false) {
+                        var five = 5;
+                    }
                 }
 
                 var counter = 0;
@@ -119,6 +128,12 @@
             </code></pre>
             <pre class="es6"><code class="javascript">
                 //es6
+                if (condition) {
+                    let j = 12; //j exists only inside the if block
+                }
+
+                console.log(j); //throws an Error
+
                 const pi = { value: 3.14 }; //pi cannot be reassigned
 
                 pi = 3.14; //throws an Error
@@ -126,12 +141,6 @@
                 pi.value = 4; //works because the value itself is not immutable
 
                 const me = Object.freeze({ name: 'Mihail' }); //true constant
-
-                if (condition) {
-                    let j = 12; //j exists only inside the if block
-                }
-
-                console.log(j); //throws an Error
             </code></pre>
         </section>
         <section id="why-let-const-declarations">
@@ -182,7 +191,7 @@
                     fancyObject.coolMethod = () => {
                         this.elements.forEach(el => {
                             this.processElement(el);
-                            //this is an errpr - "this" doesn't point to fancyObject
+                            //logical error! - "this" doesn't point to fancyObject
                         });
                     }
                 </code></pre>
@@ -192,15 +201,15 @@
             <ul>
                 <li>Readability
                     <ul>
-                        <li>shorter</li>
-                        <li>more understandable</li>
+                        <li>concise</li>
                     </ul>
                     </li>
                     <br/>
                     <li>Quality
                     <ul>
-                        <li>uses the outer "this"</li>
+                        <li>use the outer "this"</li>
                         <li>no arguments meta parameter</li>
+                        <li style="color: red">not a full substitute of functions</li>
                     </ul>
                     </li>
                 </ul>
@@ -218,6 +227,8 @@
                 Car.prototype.startEngine = function () {
                     return "Started the engine of the " + this.model;
                 };
+
+                var myCar = new Car('Tesla', 'white');
             </code></pre>
             <pre class="es6"><code class="javascript">
                 //es6
@@ -231,6 +242,8 @@
                         return "Started the engine of the " + this.model;
                     }
                 }
+
+                let myCar = new Car('Tesla', 'white');
             </code></pre>
         </section>
         <section id="why-classes">
@@ -306,6 +319,11 @@
                 let [x, y] = [23, 14];
 
                 let { name, age, pet: { name: petName } } = getPersonalInfo();
+
+                //with function parameters
+                function sayHi({ name }) { ... }
+
+                sayHi(getPersonalInfo());
             </code></pre>
         </section>
         <section id="why-destructing">
@@ -367,6 +385,39 @@
                     <li>Removes the need for the<br/>"arguments" meta parameter</li>
                 </ul>
             </li>
+            </ul>
+        </section>
+
+        <section id="default-parameters">
+            <h4>Default parameters</h4>
+            <pre class="es5"><code class="javascript">
+                //es5
+                function makeCaption(text, style) {
+                    text = text || 'default caption';
+                    style = typeof style === 'object' ? style : { color: 'red' };
+
+                    myH1.style.color = style.color;
+                    myH1.text = text;
+                }
+            </code></pre>
+            <pre class="es6"><code class="javascript">
+                //es6
+                function makeCaption(text = 'default caption', { color } = { color: 'red' }) {
+                    myH1.style.color = color;
+                    myH1.innerHTML = text;
+                }
+            </code></pre>
+        </section>
+        <section id="why-default-parameters">
+            <h4>How do default parameters help?</h4>
+            <ul>
+                <li>
+                    Readability
+                    <ul>
+                        <li>Concise</li>
+                        <li>Clear intent</li>
+                    </ul>
+                </li>
             </ul>
         </section>
 
@@ -450,6 +501,87 @@
             </ul>
         </section>
 
+        <section id="promises">
+            <h4>Promises</h4>
+            <pre class="es6"><code class="javascript">
+                //es6
+                //how to create a promise
+                let getData = (url) => new Promise((pass, fail) => {
+                    ajax(url, (error, data) => {
+                        if (error) {
+                            fail(error);
+                        } else {
+                            pass(data);
+                        }
+                    });
+                });
+
+                //using the promise
+                getData('http://somesite.com/data')
+                    .then(doSomethingClever)
+                    .catch(logError);
+
+
+                //chaining promises
+                getNumbersAsync()
+                    .then((a,b) => a + b)
+                    .then(checkSumWithServer)
+                    .then(handleServerResponse)
+                    .catch(logError);
+
+                //promise helper methods
+                Promise.resolve(value) //returns a "thenable" promise
+                Promise.reject(error) //returns a "catchable" promise
+                Promise.all([array, of, promises]) // waits for all
+                Promise.race([array, of, promises]) //the first to resolve wins
+            </code></pre>
+        </section>
+        <section id="promises-continued">
+            <h4>Promises</h4>
+            <pre class="es6"><code class="javascript">
+                //es6
+                //chaining promises
+                getNumbersAsync()
+                    .then((a,b) => a + b)
+                    .then(checkSumWithServer)
+                    .then(handleServerResponse)
+                    .catch(logError);
+
+                //promise helper methods
+                Promise.resolve(value) //returns a "thenable" promise
+                Promise.reject(error) //returns a "catchable" promise
+                Promise.all([array, of, promises]) // waits for all
+                Promise.race([array, of, promises]) //the first to resolve wins
+            </code></pre>
+        </section>
+        <section id="why-promises">
+            <h4>How do promises help?</h4>
+            <ul>
+                <li>
+                    Readability
+                    <ul>
+                        <li>Clear and natural API</li>
+                        <li>Reduce callback hell</li>
+                    </ul>
+                </li>
+                <br/>
+                <li>
+                    Abstraction
+                    <ul>
+                        <li>Future value semantics</li>
+                        <li>Invert the flow of control</li>
+                    </ul>
+                </li>
+                <br/>
+                <li>
+                    Evolution
+                    <ul>
+                        <li>Basis for implementing the async/await pattern</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
         <section id="generators">
             <h4>Generators</h4>
             <pre class="es6"><code class="javascript">
@@ -492,64 +624,6 @@
             </ul>
         </section>
 
-        <section id="promises">
-            <h4>Promises</h4>
-            <pre class="es6"><code class="javascript">
-                //es6
-                //how to use promises
-                getNumbersAsync()
-                    .then((a,b) => a + b)
-                    .then(sendSumToServer)
-                    .catch(logError);
-
-                //how to create a promise
-                let after10Seconds = new Promise((pass, fail) => {
-                    setTimeout(pass, 10000);
-                });
-
-                after10Seconds.then(doSomethingClever);
-
-                //promise helper methods
-                Promise.resolve(value) //returns a "thenable" promise
-                Promise.reject(error) //returns a "catchable" promise
-                Promise.all([array, of, promises]) // waits for all
-                Promise.race([array, of, promises]) //the first to resolve wins
-            </code></pre>
-        </section>
-        <section id="why-promises">
-            <h4>How do promises help?</h4>
-            <ul>
-                <li>
-                    Readability
-                    <ul>
-                        <li>Clear and natural API</li>
-                        <li>Reduce callback hell</li>
-                    </ul>
-                </li>
-                <br/>
-                <li>
-                    Abstraction
-                    <ul>
-                        <li>Future value semantics</li>
-                        <li>Invert the flow of control</li>
-                    </ul>
-                </li>
-                <br/>
-                <li>
-                    Evolution
-                    <ul>
-                        <li>Basis for implementing the async/await pattern</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-
-        <section id="evolution-quote">
-            <h3>Evolution</h3>
-            <div class="fragment">“The best way to predict the future is to implement it.”
-                <br/><div style="text-align: right;">--David Hansson</div></div>
-        </section>
-
         <section id="async-await">
             <h4>Async/Await</h4>
             <pre class="es7"><code class="javascript">
@@ -557,6 +631,19 @@
                 async function combinedQuery() {
                     let firstAnswer = await firstQuery(),
                         secondAnswer = await secondQuery(firstAnswer);
+
+                    return secondAnswer;
+                }
+
+                //use inside another async function
+                async function useQueryAsync() {
+                    let answer = await combinedQuery();
+                    doSomethingClever(answer);
+                }
+
+                //or use the result as a promise
+                function useQuery() {
+                    combinedQuery().then(doSomethingClever);
                 }
             </code></pre>
         </section>
@@ -566,18 +653,26 @@
             <pre class="es7"><code class="javascript">
                 //es7
                 let myObject = {
+                    //built-in annotation
                     @readonly
                     myConstant: 42
                 };
 
                 myObject.constant = 7; //throws an error
+
+                //custom annotation
+                @authorized
+                function getData() { ... }
+
+                //annotation definitions are just functions
+                function authorized() { ... }
             </code></pre>
         </section>
 
         <section id="http2">
             <h4>HTTP/2</h4>
             <ul>
-                <li>faster</li>
+                <li>faster and smarter</li>
                 <li>two way communication</li>
                 <li>breaks many hacks around http 1.1</li>
             </ul>
@@ -587,21 +682,25 @@
             <h4>WebAssembly</h4>
             <ul>
                 <li>A byte-code for the web</li>
+                <li>Decouples the language from the runtime</li>
                 <li>Compiled from many languages</li>
             </ul>
-        </section>
-
-        <section id="thanks">
-            <h4>Thank you!</h4>
-            <h3>Comments? Question?</h3>
         </section>
 
         <section id="links">
             <h4>Links!</h4>
             <ul>
-                <li>Intro to server side JavaScript (previous presentation)</li>
-                <li>You don't know JavaScript book series</li>
+                <li><a href="http://mmikoff.net/slides/aubg_js/">Intro to server side JavaScript (previous presentation)</a></li>
+                <li><a href="https://github.com/getify/You-Dont-Know-JS">You don't know JavaScript book series</a></li>
+                <li><a href="http://exploringjs.com/">Exploring ES6</a></li>
+                <li><a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/">JavaScript Design Patterns</a>a</li>
+                <li><a href="https://github.com/tc39">JavaScript language development committee</a></li>
             </ul>
+        </section>
+
+        <section id="thanks">
+            <h4>Thank you!</h4>
+            <h3>Questions? Comments?</h3>
         </section>
     </div>
 </div>
