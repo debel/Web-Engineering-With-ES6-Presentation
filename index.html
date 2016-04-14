@@ -520,20 +520,6 @@
                 getData('http://somesite.com/data')
                     .then(doSomethingClever)
                     .catch(logError);
-
-
-                //chaining promises
-                getNumbersAsync()
-                    .then((a,b) => a + b)
-                    .then(checkSumWithServer)
-                    .then(handleServerResponse)
-                    .catch(logError);
-
-                //promise helper methods
-                Promise.resolve(value) //returns a "thenable" promise
-                Promise.reject(error) //returns a "catchable" promise
-                Promise.all([array, of, promises]) // waits for all
-                Promise.race([array, of, promises]) //the first to resolve wins
             </code></pre>
         </section>
         <section id="promises-continued">
@@ -693,7 +679,7 @@
                 <li><a href="http://mmikoff.net/slides/aubg_js/">Intro to server side JavaScript (previous presentation)</a></li>
                 <li><a href="https://github.com/getify/You-Dont-Know-JS">You don't know JavaScript book series</a></li>
                 <li><a href="http://exploringjs.com/">Exploring ES6</a></li>
-                <li><a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/">JavaScript Design Patterns</a>a</li>
+                <li><a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/">JavaScript Design Patterns</a></li>
                 <li><a href="https://github.com/tc39">JavaScript language development committee</a></li>
             </ul>
         </section>
